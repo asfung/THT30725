@@ -22,3 +22,8 @@ DATABASE_PASSWORD=PASSWORD
 $ mvn spring-boot:run
 ```
 
+### Open Browser
+```
+http://localhost:8080/swagger-ui/index.html
+```
+
