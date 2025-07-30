@@ -84,7 +84,7 @@ public class GudangController {
   @GetMapping
   @Operation(summary = "Paginate all Gudang")
   public ResponseEntity<DatatableResponse<GudangResponse>> paginate(
-      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "1") int page,
       @RequestParam(defaultValue = "5") int limit) {
     var paginate = gudangService.paginateGudang(page, limit);
     var list = paginate.getData().stream()

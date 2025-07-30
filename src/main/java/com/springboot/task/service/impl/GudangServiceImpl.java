@@ -106,16 +106,20 @@ public class GudangServiceImpl implements GudangService {
 
   @Override
   public ListResponse<Gudang> findByKodeKantor(String kodeKantor) {
-    return new ListResponse<>(gudangRepository.findByKodeKantor(kodeKantor));
+    var result = gudangRepository.findByKodeKantor(kodeKantor);
+    if (result.isEmpty()) {
+      throw new NotFoundException("Gudang not found");
+    }
+    return new ListResponse<>(result);
   }
 
   @Override
   public DatatableResponse<Gudang> paginateGudang(int page, int limit) {
-    PageRequest pageRequest = PageRequest.of(page, limit);
+    PageRequest pageRequest = PageRequest.of(page - 1, limit);
     var result = gudangRepository.findAll(pageRequest);
     return new DatatableResponse<>(
       result.getContent(), 
-      result.getSize(), 
+      result.getNumberOfElements(), 
       result.getTotalElements(), 
       result.getTotalPages()
     );

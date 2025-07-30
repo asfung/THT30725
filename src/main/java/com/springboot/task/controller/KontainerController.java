@@ -91,7 +91,7 @@ public class KontainerController {
   @GetMapping
   @Operation(summary = "Paginate all Kontainer")
   public ResponseEntity<DatatableResponse<KontainerResponse>> paginate(
-      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "1") int page,
       @RequestParam(defaultValue = "5") int limit) {
     var paginate = kontainerService.paginateKontainer(page, limit);
     var list = paginate.getData().stream().map(DtoMapper::toDto).toList();

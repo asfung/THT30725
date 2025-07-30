@@ -107,17 +107,21 @@ public class KontainerServiceImpl implements KontainerService {
 
   @Override
   public ListResponse<Kontainer> findByGudangKantorDokumen(String kodeGudang, String kodeKantor, String nomorDokumen) {
-    return new ListResponse<>(
-      kontainerRepository.findByKodeGudangAndKodeKantorAndNomorDokumen(kodeGudang, kodeKantor, nomorDokumen));
+    var result = kontainerRepository.findByKodeGudangAndKodeKantorAndNomorDokumen(kodeGudang, kodeKantor, nomorDokumen);
+    if (result.isEmpty()) {
+      throw new NotFoundException("Kontainer not found");
+    }
+    return new ListResponse<>(result);
+
   }
 
   @Override
   public DatatableResponse<Kontainer> paginateKontainer(int page, int limit) {
-    PageRequest pageRequest = PageRequest.of(page, limit);
+    PageRequest pageRequest = PageRequest.of(page - 1, limit);
     var result = kontainerRepository.findAll(pageRequest);
     return new DatatableResponse<>(
       result.getContent(), 
-      result.getSize(), 
+      result.getNumberOfElements(), 
       result.getTotalElements(), 
       result.getTotalPages()
     );

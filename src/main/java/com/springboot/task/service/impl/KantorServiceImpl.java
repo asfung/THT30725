@@ -100,14 +100,14 @@ public class KantorServiceImpl implements KantorService {
 
   @Override
   public DatatableResponse<Kantor> paginateKantor(int page, int limit) {
-    PageRequest pageRequest = PageRequest.of(page, limit);
+    PageRequest pageRequest = PageRequest.of(page - 1, limit);
     var result = kantorRepository.findAll(pageRequest);
     // if(result.isEmpty()){
     //   throw new NotFoundException("Kantor not found");
     // }
     return new DatatableResponse<>(
       result.getContent(), 
-      result.getSize(), 
+      result.getNumberOfElements(), 
       result.getTotalElements(), 
       result.getTotalPages()
     );

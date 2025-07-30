@@ -76,7 +76,7 @@ public class KantorController {
   @GetMapping
   @Operation(summary = "Paginate all Kantor")
   public ResponseEntity<DatatableResponse<KantorResponse>> paginate(
-      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "1") int page,
       @RequestParam(defaultValue = "5") int limit,
       HttpServletRequest request) {
 
