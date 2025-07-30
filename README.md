@@ -1,5 +1,10 @@
 # THT30725
 
+### System Info
+- Fedora Linux 42 (Workstation Edition)
+- GraalVM 17 Community Edition
+- Maven 3.9.9
+- MySQL 0.4.32-MariaDB
 
 ## Quick Start
 
@@ -18,8 +23,11 @@ DATABASE_USERNAME=USERNAME
 DATABASE_PASSWORD=PASSWORD
 ```
 
+### Run Spring Boot Project
 ```bash
 $ mvn spring-boot:run
+# or 
+$ ./mvnw spring-boot:run
 ```
 
 ### Open Browser
