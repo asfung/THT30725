@@ -1,1 +1,15 @@
 # THT30725
+
+
+## Quick Start
+`
+$ cp .env.example .env
+`
+
+```
+DATABASE_NAME=NAME
+DATABASE_PORT=3306 # mysql port
+DATABASE_USERNAME=USERNAME
+DATABASE_PASSWORD=PASSWORD
+```
+
